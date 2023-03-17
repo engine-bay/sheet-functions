@@ -7,9 +7,14 @@
     <Nullable>enable</Nullable>
     <PackageId>EngineBay.SheetFunctions</PackageId>
     <Version>0.0.2</Version>
-    <Authors>your_name</Authors>
+    <Authors>EngineBay</Authors>
     <Company>EngineBay</Company>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+    <PackageProjectUrl>https://github.com/engine-bay/sheet-functions</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/engine-bay/sheet-functions</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -25,4 +30,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="../README.md" Pack="true" PackagePath="\"/>
+    <None Include="../LICENSE.txt" Pack="true" PackagePath=""/>
+</ItemGroup>
 </Project>
