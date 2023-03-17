@@ -16,16 +16,12 @@ jobs:
         dotnet-version: 7.0.x
     - name: Restore dependencies
       run: dotnet restore
-    - name: Build Debug
-      run: dotnet build --no-restore
     - name: Test
-      run: dotnet test --no-build
-    - name: Build Release
-      run: dotnet build --no-restore -c release
+      run: dotnet test
     - name: Package
       env:
           RELEASE_VERSION: ${{ steps.vars.outputs.tag }}
-      run: dotnet pack -p:PackageVersion=$RELEASE_VERSION --no-build -c release
+      run: dotnet pack -p:PackageVersion=$RELEASE_VERSION -c release
     - name: Publish
       env:
           RELEASE_VERSION: ${{ steps.vars.outputs.tag }}
