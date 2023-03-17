@@ -17,10 +17,12 @@ jobs:
         dotnet-version: 7.0.x
     - name: Restore dependencies
       run: dotnet restore
-    - name: Build
-      run: dotnet build --no-restore -c release
+    - name: Build Debug
+      run: dotnet build --no-restore
     - name: Test
       run: dotnet test --no-build --verbosity normal
+    - name: Build Release
+      run: dotnet build --no-restore -c release
     - name: Package
       run: dotnet pack -c release
     - name: Publish
