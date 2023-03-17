@@ -19,10 +19,8 @@ jobs:
     - name: Test
       run: dotnet test
     - name: Package
-      env:
-          RELEASE_VERSION: ${{ steps.vars.outputs.tag }}
-      run: dotnet pack -p:PackageVersion=$RELEASE_VERSION -c release
+      run: dotnet pack -p:PackageVersion=${{ steps.vars.outputs.tag }} -c release
     - name: Publish
       env:
           RELEASE_VERSION: ${{ steps.vars.outputs.tag }}
-      run: dotnet nuget push ./bin/Release/EngineBay.SheetFunctions.$RELEASE_VERSION.nupkg --api-key "${{ secrets.NUGET_PUBLISHING_API_KEY }}" --source "https://api.nuget.org/v3/index.json"
+      run: dotnet nuget push ./bin/Release/EngineBay.SheetFunctions.${{ steps.vars.outputs.tag }}.nupkg --api-key "${{ secrets.NUGET_PUBLISHING_API_KEY }}" --source "https://api.nuget.org/v3/index.json"
