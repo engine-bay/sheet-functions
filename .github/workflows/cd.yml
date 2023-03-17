@@ -26,4 +26,4 @@ jobs:
     - name: Package
       run: dotnet pack -c release
     - name: Publish
-      run: dotnet nuget push ./bin/release/EngineBay.SheetFunctions.0.0.2.nupkg --api-key "${{ secrets.NUGET_PUBLISHING_API_KEY }}" --source "https://api.nuget.org/v3/index.json"
+      run: dotnet nuget push ./bin/Release/EngineBay.SheetFunctions.0.0.2.nupkg --api-key "${{ secrets.NUGET_PUBLISHING_API_KEY }}" --source "https://api.nuget.org/v3/index.json"
