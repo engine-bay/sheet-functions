@@ -17,7 +17,7 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore
     - name: Test
-      run: dotnet test --no-resore
+      run: dotnet test --no-restore
     - name: Package
       run: dotnet pack -p:PackageVersion=${{  github.ref_name }} -c release
     - name: Publish
