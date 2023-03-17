@@ -1,5 +1,9 @@
 name: Continious Delivery
 
+on:
+  push:
+    branches: [ "main" ]
+
 jobs:
   build:
 
