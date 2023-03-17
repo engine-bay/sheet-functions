@@ -1,2 +1,3 @@
-# sheet-functions
-SheetFunctions Module
+# EngineBay.SheetFunctions
+
+SheetFunctions module for EngineBay
