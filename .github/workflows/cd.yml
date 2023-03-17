@@ -5,7 +5,7 @@ on:
     branches: [ "main" ]
 
 jobs:
-  build:
+  publish:
 
     runs-on: ubuntu-latest
 
@@ -18,10 +18,10 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
-      run: dotnet build --no-restore
+      run: dotnet build --no-restore -c release
     - name: Test
       run: dotnet test --no-build --verbosity normal
     - name: Package
-      run: dotnet pack
+      run: dotnet pack -c release
     - name: Publish
-      run: dotnet nuget push bin/Debug/EngineBay.SheetFunctions.0.0.2.nupkg --api-key ${{ secrets.NUGET_PUBLISHING_API_KEY }} --source https://api.nuget.org/v3/index.json
+      run: dotnet nuget push ./bin/release/EngineBay.SheetFunctions.0.0.2.nupkg --api-key ${{ secrets.NUGET_PUBLISHING_API_KEY }} --source https://api.nuget.org/v3/index.json
