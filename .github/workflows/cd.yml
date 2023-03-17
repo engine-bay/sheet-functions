@@ -2,13 +2,12 @@ name: Continious Delivery
 
 on:
   push:
-    branches: [ "main" ]
+    tags:
+      - '*'
 
 jobs:
   publish:
-
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v3
     - name: Setup .NET
@@ -20,10 +19,14 @@ jobs:
     - name: Build Debug
       run: dotnet build --no-restore
     - name: Test
-      run: dotnet test --no-build --verbosity normal
+      run: dotnet test --no-build
     - name: Build Release
       run: dotnet build --no-restore -c release
     - name: Package
-      run: dotnet pack -c release
+      env:
+          RELEASE_VERSION: ${{ steps.vars.outputs.tag }}
+      run: dotnet pack -p:PackageVersion=$RELEASE_VERSION --no-build -c release
     - name: Publish
-      run: dotnet nuget push ./bin/Release/EngineBay.SheetFunctions.0.0.2.nupkg --api-key "${{ secrets.NUGET_PUBLISHING_API_KEY }}" --source "https://api.nuget.org/v3/index.json"
+      env:
+          RELEASE_VERSION: ${{ steps.vars.outputs.tag }}
+      run: dotnet nuget push ./bin/Release/EngineBay.SheetFunctions.$RELEASE_VERSION.nupkg --api-key "${{ secrets.NUGET_PUBLISHING_API_KEY }}" --source "https://api.nuget.org/v3/index.json"
