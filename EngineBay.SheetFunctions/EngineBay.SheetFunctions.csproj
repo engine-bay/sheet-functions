@@ -6,7 +6,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <PackageId>EngineBay.SheetFunctions</PackageId>
-    <Version>0.0.1</Version>
+    <Version>0.0.2</Version>
     <Authors>your_name</Authors>
     <Company>EngineBay</Company>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
