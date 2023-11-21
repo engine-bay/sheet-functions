@@ -7,10 +7,7 @@ namespace EngineBay.SheetFunctions
     {
         public static string VLOOKUP(string lookupValue, DataTable dataTable, int index, int sortDirection)
         {
-            if (dataTable is null)
-            {
-                throw new ArgumentNullException(nameof(dataTable));
-            }
+            ArgumentNullException.ThrowIfNull(dataTable);
 
             foreach (DataColumn col in dataTable.Columns)
             {
