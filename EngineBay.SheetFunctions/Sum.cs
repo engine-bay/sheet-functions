@@ -8,10 +8,7 @@ namespace EngineBay.SheetFunctions
     {
         public static string SUM(DataTable dataTable)
         {
-            if (dataTable is null)
-            {
-                throw new ArgumentNullException(nameof(dataTable));
-            }
+            ArgumentNullException.ThrowIfNull(dataTable);
 
             double sum = 0;
             foreach (DataColumn col in dataTable.Columns)
